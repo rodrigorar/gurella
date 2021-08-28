@@ -24,9 +24,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        hashedPassword = hashing.hash_value(password, salt='abcd')
-        if not hashing.check_value(hashedPassword, password, salt='abcd'):
-            abort(500)
+        hashedPassword = hashing.hash_value(password)
 
         tx = Transaction()
         with tx:
@@ -47,9 +45,7 @@ def register():
         email = request.form['email']
         password = request.form['password']
 
-        hashedPassword = hashing.hash_value(password, salt='abcd')
-        if not hashing.check_value(hashedPassword, password, salt='abcd'):
-            abort(500)
+        hashedPassword = hashing.hash_value(password)
 
         tx = Transaction()
         with tx:
