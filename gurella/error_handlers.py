@@ -1,6 +1,7 @@
-def handler_bad_request(e):
-    return 'Bad Request', 400
+from flask import request
 
 
-def handler_internal_server_error(e):
-    return 'Internal Server Error', 500
+def handler_exception(e):
+    if request.path.startswith('/api/'):
+        return '{"message": "Internal Server Error"}'
+    return 'You fucked up'

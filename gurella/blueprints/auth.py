@@ -51,7 +51,6 @@ def register():
         if not hashing.check_value(hashedPassword, password, salt='abcd'):
             abort(500)
 
-        # TODO: Use transactiont o create new user in database
         tx = Transaction()
         with tx:
             user = tx.execute(lambda db_session: db_session.add(User(username=username, email=email, password=hashedPassword)))

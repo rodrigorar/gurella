@@ -1,7 +1,7 @@
 from flask import Flask
 
 from gurella.blueprints.auth import auth_bp
-from gurella.error_handlers import handler_bad_request, handler_internal_server_error
+from gurella.error_handlers import handler_exception
 from gurella.extensions import init_migrate, db, hashing
 from gurella.blueprints.views import views_bp
 
@@ -30,5 +30,4 @@ def init_blueprints(app):
 
 
 def init_error_handlers(app):
-    app.register_error_handler(400, handler_bad_request)
-    app.register_error_handler(500, handler_internal_server_error)
+    app.register_error_handler(Exception, handler_exception)
