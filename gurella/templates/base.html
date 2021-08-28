@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <title>Gurella</title>
+    <div>{% block head %}{% endblock head %}</div>
+</head>
+<body>
+<div id="menu">
+    {% block menu %}
+        <ul class="topnav">
+            <li><a href="{{ url_for('views.dashboard') }}">Home</a></li>
+            <li><a href="{{ url_for('views.campaigns') }}">Campaings</a></li>
+            <li stype="float:right"><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+        </ul>
+    {% endblock menu %}
+</div>
+<div id="content">{% block content %}{% endblock content %}</div>
+</body>
+</html>
